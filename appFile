@@ -1,0 +1,24 @@
+wxApp:
+			wxApp () -> OK
+	virtual 	~wxApp () -> OK
+	virtual wxVideoMode 	GetDisplayMode () const -> property
+	bool 	GetExitOnFrameDelete () const -> property
+	virtual wxLayoutDirection 	GetLayoutDirection () const -> property
+	bool 	GetUseBestVisual () const -> property
+	virtual wxWindow * 	GetTopWindow () const -> property
+	virtual bool 	IsActive () const -> property
+	virtual bool 	SafeYield (wxWindow *win, bool onlyIfNeeded) -> property(pending)
+	virtual bool 	SafeYieldFor (wxWindow *win, long eventsToProcess) -> property(pending)
+	bool 	ProcessMessage (WXMSG *msg)
+	virtual bool 	SetDisplayMode (const wxVideoMode &info) -> property
+	void 	SetExitOnFrameDelete (bool flag) -> property
+	virtual bool 	SetNativeTheme (const wxString &theme) -> property throws Exception
+	void 	SetTopWindow (wxWindow *window) -> property
+	void 	SetUseBestVisual (bool flag, bool forceTrueColour=false) -> property(pending)
+	virtual void 	MacNewFile () -> OK
+	virtual void 	MacOpenFiles (const wxArrayString &fileNames) -> OK
+	virtual void 	MacOpenFile (const wxString &fileName) -> OK
+	virtual void 	MacOpenURL (const wxString &url) -> OK
+	virtual void 	MacPrintFile (const wxString &fileName) -> OK
+	virtual void 	MacReopenApp () -> OK
+	virtual bool 	OSXIsGUIApplication () -> property(pending)
