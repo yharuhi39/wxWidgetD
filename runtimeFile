@@ -1,0 +1,29 @@
+wxObject:
+				wxObject ()
+				wxObject (const wxObject &other)
+	virtual 		~wxObject ()
+	virtual wxClassInfo * 	GetClassInfo () const
+	wxObjectRefData * 	GetRefData () const
+	bool 			IsKindOf (const wxClassInfo *info) const -> OK
+	bool 			IsSameAs (const wxObject &obj) const -> OK
+	void 				Ref (const wxObject &clone) -> OK
+	void 			    	SetRefData (wxObjectRefData *data)
+	void 				UnRef () -> OK
+	void 			      	UnShare () -> OK
+	void 	operator 		delete (void *buf) -> pending
+	void * 	operator 	       	new (size_t size, const wxString &filename=NULL, int lineNum=0) -> pending
+	void 			    	AllocExclusive () -> OK
+	virtual wxObjectRefData * 	CreateRefData () const -> OK
+	virtual wxObjectRefData * 	CloneRefData (const wxObjectRefData *data) const -> pending(dup is more appropreate?)
+	wxObjectRefData * 	m_refData -> refData
+
+
+wxClassInfo:
+			wxClassInfo (const wxChar *className, const wxClassInfo *baseClass1, const wxClassInfo *baseClass2, int size, wxObjectConstructorFn fn) -> OK
+	wxObject * 	CreateObject () const -> OK
+	const wxChar * 	GetBaseClassName1 () const -> property
+	const wxChar * 	GetBaseClassName2 () const -> property
+	const wxChar * 	GetClassName () const -> property
+	int 	GetSize () const -> property
+	bool 	IsDynamic () const -> property(pending)
+	bool 	IsKindOf (const wxClassInfo *info) const -> property(pending)
