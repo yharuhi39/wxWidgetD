@@ -3,8 +3,11 @@ class wxObject : Object
 {
 public:
   const wxClassInfo[] classParents = { null };
+
   this(){ this.RefData = null; }
+
   ~this(){ this.UnRef(); }
+
   void Ref(wxObject clone)
   {
     if(this.RefData == clone.RefData) return;
@@ -29,19 +32,31 @@ public:
 
   @property
   {
-    override auto dup(wxObject[] a);
+    override auto dup(wxObject[] a)
+    {
+      wxObject[] ret;
+      ret.length = a.length;
+      foreach(wxObject obj; a)
+	{
+	  if(this.RefData == )
+	    {
+	    }
+	}
+    }
     wxClassInfo ClassInfo(){ return this.classinfo; }
     wxObjectRefData RefData(){ return this.refData; }
     void RefData(wxObjectRefData data){ this.refData = data; }
   }
 
   bool IsKindOf(wxClassInfo info){ return (this.ClassInfo) ? this.ClassInfo.IsKindOf(info) : false; }
+
   bool IsSameAs(wxClassInfo info){ return this.RefData == o.RefData}
 
   override bool opEquals(Object info){ return this.ClassInfo == cast(wxClassInfo)info; }
 
   override void destroy(wxObject buf) throws Exception { throw new Exception("Error"); }
 protected:
+
   wxObjectRefData refData;
   
   void AllocExclusive()
