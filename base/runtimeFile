@@ -27,3 +27,25 @@ wxClassInfo:
 	int 	GetSize () const -> property
 	bool 	IsDynamic () const -> property(pending)
 	bool 	IsKindOf (const wxClassInfo *info) const -> property(pending)
+
+wxRefCounter:
+			wxRefCounter() -> OK
+	int		GetRefCount() -> property
+	void		IncRef() -> OK
+	void		DecRef() -> OK
+	virtual		~wxRefCounter() -> OK
+
+wxObjectDataPtr: ( -> wxObjectRefData )
+ 		        wxObjectDataPtr (T *ptr=NULL) -> OK
+ 		        wxObjectDataPtr (const wxObjectDataPtr< T > &tocopy) -> missing need to be implemented
+ 			~wxObjectDataPtr () -> OK
+	T * 		get () const -> OK
+	void 		reset (T *ptr) -> OK
+ 	operator 	unspecified_bool_type () const -> pending
+	T & 		operator* () const -> pending
+	T * 		operator-> () const -> pending
+	wxObjectDataPtr< T > & 	operator= (const wxObjectDataPtr< T > &tocopy)
+	wxObjectDataPtr< T > & 	operator= (T *ptr)
+
+
+Current Status: Done(abandunded for some pending functions)
