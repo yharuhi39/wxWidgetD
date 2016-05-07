@@ -1,4 +1,4 @@
-package wxd.base.rtii;
+module wxd.base.rtti;
 
 class wxObject
 {
