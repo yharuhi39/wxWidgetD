@@ -7,7 +7,7 @@ public:
 
   static const
   {
-    wxScopedCharTypeBuffer CreateNonOwned(const CharType[] str, size_t len = wxNO_LEN);
+    wxScopedCharTypeBuffer CreateNonOwned(const CharType[] str, size_t len = wxNO_LEN)
     {
       if(len == wxNO_LEN) len = wxStrlen(str);
       auto buf = new wxScopedCharTypeBuffer!(CharType);
@@ -25,43 +25,43 @@ public:
   }
   @property
   {
-    ref CharType Data(){return this.data
-	size_t length();
-    }
-    
-    this()
-      {
-	this.data = null;
-      }
-  
-    ~this()
-      {
-	this.DecRef();
-      }
-
-    CharType[] release();
-
-    void reset();
-
-    @disable overload opIndex(int i, int j); // no needed
-    bool opEquals(Object rhs)
-    {
-      return this.data == (cast(wxScopedCharTypeBuffer)rhs).data;
-    }
-  
-    void opAssign(ref wxScopedCharTypeBuffer src)
-    {
-      if(src == this) return;
-      DecRef();
-      this.data = src.Data;
-      IncRef();
-    }
-
-  
-  protected:
-    Data data;
+    ref CharType Data(){return this.data; }
+    size_t length();
   }
+    
+  this()
+  {
+    this.data = null;
+  }
+  
+  ~this()
+  {
+    this.DecRef();
+  }
+
+  CharType[] release();
+
+  void reset();
+
+  @disable override opIndex(int i, int j); // no needed
+  override bool opEquals(Object rhs)
+  {
+    return this.data == (cast(wxScopedCharTypeBuffer)rhs).data;
+  }
+  
+  void opAssign(ref wxScopedCharTypeBuffer src)
+  {
+    if(src == this) return;
+    DecRef();
+    this.data = src.Data;
+    IncRef();
+  }
+
+  
+protected:
+  Data data;
 }
+
 
 alias wxScopedCharBuffer = wxScopedCharTypeBuffer!(char);
 alias wxScopedWCharBuffer = wxScopedCharTypeBuffer!(wchar);
@@ -170,7 +170,7 @@ class wxPrintDialogData
 class wxConvAuto : wxConv
 {
 public:
-  import std.stream : BOM // will represent to std.encoding.BOM
+  import std.stream : BOM; // will represent to std.encoding.BOM
 
   this(wxFontEncoding enc = wxFontEncodingDefault)
   {
@@ -188,8 +188,8 @@ public:
   ~this() { if(this.ownsConv)conv.destroy(); }
   @property
   {
-    BoM(){ }
-    BoMChars(BOM bom, int count);
+    BOM BoM(){ }
+    wxString BOMBoMChars(BOM bom, int count); // ?
     static wxFontEncoding FallbackEncoding();
     static void FallbackEncoding(wxFontEncoding enc);
   }
