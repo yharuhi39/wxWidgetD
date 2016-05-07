@@ -1,4 +1,4 @@
-module wx.base.datastructure;
+module wxwidgetd.base.datastructure;
 
 class wxScopedCharTypeBuffer(T)
 {

@@ -1,3 +1,5 @@
+module wxwidgetd.base.app;
+
 class wxApp : wxAppConsole
 {
 public:
@@ -25,10 +27,10 @@ public:
     bool UseBestVisual();
     wxWindow TopWindow();
     bool Active();
-    void DisplayMode(wxVideoMode info) throws Exception;
+    void DisplayMode(wxVideoMode info); // throws Exception;
     void ExitOnFrameDelete(bool flag);
-    void NativeTheme(wxString theme) throws Exception;
-    void TopWindow(wxWindow window) throws Exception;
+    void NativeTheme(wxString theme);// throws Exception;
+    void TopWindow(wxWindow window); // throws Exception;
     void UseBestVisual(bool flag, bool forceTrueColor=false);
   }
 

@@ -1,14 +1,12 @@
-module wxd.core.datastructure;
-
-import wxd.base.datastructure;
+module wxwidgetd.core.datastructure;
 
 class wxColorData
 {
 public:
   enum
     {
-      NumberOfCustomColors = 16;
-      ColumnDataSeparator = ',';
+      NumberOfCustomColors = 16,
+      ColumnDataSeparator = ',',
     }
 
   this()

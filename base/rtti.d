@@ -1,4 +1,4 @@
-module wxd.base.rtti;
+module wxwidgetd.base.rtti;
 
 class wxObject
 {
@@ -33,7 +33,7 @@ public:
 
   @property
   {
-    @disabled override auto dup(wxObject[] a)
+    @disabled auto dup(wxObject[] a)
     {
       throw new UnImplementedOperationException();
     }
@@ -58,11 +58,11 @@ public:
 
   bool IsKindOf(wxClassInfo info){ return (this.ClassInfo) ? this.ClassInfo.IsKindOf(info) : false; }
 
-  bool IsSameAs(wxClassInfo info){ return this.RefData == o.RefData}
+  bool IsSameAs(wxClassInfo info){ return this.RefData == o.RefData; }
 
   override bool opEquals(Object info){ return this.ClassInfo == cast(wxClassInfo)info; }
 
-  override void destroy(wxObject buf) throws Exception { this.RefData = null; super.destroy(); }
+  void destroy(wxObject buf) { this.RefData = null; super.destroy(); }
 protected:
 
   wxObjectRefData refData;
@@ -95,7 +95,7 @@ public:
   }
 
   // It it not sure that it would work.
-  @disable this(wxObjectData<T> copy)
+  @disable this(wxObjectData copy)
   {
     this.Pointer = copy.Pointer;
   }
@@ -163,7 +163,7 @@ public:
   ~this()
   {
     if(this == classInfo[0])
-      classInfo.remove(classInfo[0])
+      classInfo.remove(classInfo[0]);
   }
   const wxObject createObject()
   {
@@ -215,7 +215,7 @@ public:
       return cast(wxClassInfo)(wxClassInfo.classTable.get(className));
     else
       {
-	for(wxClassInfo info; wxClassInfo.classInfo)
+	foreach(wxClassInfo info; wxClassInfo.classInfo)
 	  {
 	    if(className == info.ClassName) return info;
 	  }
