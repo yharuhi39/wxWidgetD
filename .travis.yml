@@ -1,4 +1,7 @@
+language: d
 d: dmd-2.071.0
 
+script:
+  - dmd ./base/rtti.d ./base/app.d ./base/datastructure.d ./core/datastructure.d -unittest -profile -cov -O -main
 after_success:
   - bash <(curl -s https://codecov.io/bash)
