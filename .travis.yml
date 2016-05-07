@@ -1,3 +1,6 @@
 language: D
 D:
     2.071.0
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
