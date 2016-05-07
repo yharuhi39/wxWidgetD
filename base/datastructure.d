@@ -62,7 +62,6 @@ protected:
   Data data;
 }
 
-
 alias wxScopedCharBuffer = wxScopedCharTypeBuffer!(char);
 alias wxScopedWCharBuffer = wxScopedCharTypeBuffer!(wchar);
 
@@ -189,7 +188,7 @@ public:
   @property
   {
     BOM BoM(){ }
-    wxString BOMBoMChars(BOM bom, int count); // ?
+    wxString BOMBoMChars(BOM bom, int count); // ?o
     static wxFontEncoding FallbackEncoding();
     static void FallbackEncoding(wxFontEncoding enc);
   }
