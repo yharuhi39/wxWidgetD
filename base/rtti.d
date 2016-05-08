@@ -1,5 +1,6 @@
 module wxwidgetd.base.rtti;
 
+import datastructure:wxString;
 class wxObject
 {
 public:

@@ -1,5 +1,6 @@
 module wxwidgetd.base.app;
 
+import datastructure:wxString;
 class wxApp : wxAppConsole
 {
 public:
